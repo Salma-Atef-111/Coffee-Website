@@ -27,42 +27,16 @@ window.addEventListener("scroll", () => {
 /////////////////////////////
 function showSections() {
   const sections = document.querySelectorAll("section");
-  const windowHeight = window.innerHeight; // ارتفاع نافذة المتصفح
+  const windowHeight = window.innerHeight;
 
   sections.forEach((section) => {
-    const rect = section.getBoundingClientRect(); // للحصول على موقع السيكشن
+    const rect = section.getBoundingClientRect();
     if (rect.top < windowHeight * 0.9) {
-      // إذا كان السيكشن داخل النافذة
-      section.classList.add("visible"); // أضف كلاس visible
+      section.classList.add("visible");
     }
   });
 }
 
-// تنفيذ الوظيفة عند التمرير
 window.addEventListener("scroll", showSections);
-// تنفيذ الوظيفة عند تحميل الصفحة
 document.addEventListener("DOMContentLoaded", showSections);
 window.scrollTo(0, 0);
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   const sections = document.querySelectorAll("section");
-
-//   const observerOptions = {
-//     root: null, // يعتبر النافذة الخاصة بالمتصفح
-//     rootMargin: "0px",
-//     threshold: 0.1, // يظهر السيكشن لما 10% منه يكون ظاهر
-//   };
-
-//   const observer = new IntersectionObserver((entries) => {
-//     entries.forEach((entry) => {
-//       if (entry.isIntersecting) {
-//         entry.target.classList.add("visible"); // أضف كلاس visible
-//         observer.unobserve(entry.target); // وقف المراقبة للسيكشن بعد ما يظهر
-//       }
-//     });
-//   }, observerOptions);
-
-//   sections.forEach((section) => {
-//     observer.observe(section); // ابدأ بمراقبة كل سيكشن
-//   });
-// });
